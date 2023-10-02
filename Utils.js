@@ -1,0 +1,105 @@
+const options = Object.freeze({
+  minusculas: [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "ñ",
+    "o",
+    "p",
+    "q",
+    "r",
+    "s",
+    "t",
+    "u",
+    "v",
+    "w",
+    "x",
+    "y",
+    "z",
+  ],
+  mayusculas: [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L",
+    "M",
+    "N",
+    "Ñ",
+    "O",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "U",
+    "V",
+    "W",
+    "X",
+    "Y",
+    "Z",
+  ],
+  numeros: ["1", "2", "3", "4", "5", "6", "7", "8", "9"],
+  simbolos: ["!", "#", "$", "%", "&", "(", ")", "*", "+", "-", "."],
+});
+export const generatePassword = (state, longitud) => {
+  const password = [];
+
+  for (let i = 0; i < longitud; i++) {
+    const keys = Object.keys(state);
+    let randomArray = keys[Math.floor(Math.random() * 4)];
+
+    if (state[randomArray]) {
+      const randomCharacter =
+        options[randomArray][
+          Math.floor(Math.random() * options[randomArray].length)
+        ];
+      password.push(randomCharacter);
+    } else {
+      i--;
+    }
+  }
+
+  return password.join("");
+};
+
+export const INITIAL_STATE = {
+  mayusculas: false,
+  minusculas: true,
+  numeros: false,
+  simbolos: false,
+};
+
+export const passwordReducer = (state, action) => {
+  const { type, payload } = action;
+  switch (type) {
+    case "SET_MAYUSCULAS":
+      return { ...state, mayusculas: payload };
+    case "SET_MINUSCULAS":
+      return { ...state, minusculas: payload };
+    case "SET_NUMEROS":
+      return { ...state, numeros: payload };
+    case "SET_SIMBOLOS":
+      return { ...state, simbolos: payload };
+    default:
+      return state;
+  }
+};
