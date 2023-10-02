@@ -1,4 +1,4 @@
-const options = Object.freeze({
+export const options = Object.freeze({
   minusculas: [
     "a",
     "b",
@@ -60,26 +60,6 @@ const options = Object.freeze({
   numeros: ["1", "2", "3", "4", "5", "6", "7", "8", "9"],
   simbolos: ["!", "#", "$", "%", "&", "(", ")", "*", "+", "-", "."],
 });
-export const generatePassword = (state, longitud) => {
-  const password = [];
-
-  for (let i = 0; i < longitud; i++) {
-    const keys = Object.keys(state);
-    let randomArray = keys[Math.floor(Math.random() * 4)];
-
-    if (state[randomArray]) {
-      const randomCharacter =
-        options[randomArray][
-          Math.floor(Math.random() * options[randomArray].length)
-        ];
-      password.push(randomCharacter);
-    } else {
-      i--;
-    }
-  }
-
-  return password.join("");
-};
 
 export const INITIAL_STATE = {
   mayusculas: false,
