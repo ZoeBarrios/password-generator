@@ -1,4 +1,5 @@
-import { memo, useCallback, useRef } from "react";
+import { memo, useCallback, useContext, useRef } from "react";
+import LengthContext from "../Contexts/length-contex";
 
 const TYPE_INPUT = {
   SUMA: "SUMA",
@@ -6,7 +7,8 @@ const TYPE_INPUT = {
   RANGE: "RANGE",
 };
 
-function LongitudInputComponent({ longitud, setLength }) {
+function LongitudInputComponent() {
+  const { length, setLength } = useContext(LengthContext);
   const rangeRef = useRef(null);
   const handleSetLongitud = useCallback(
     ({ target }) => {
@@ -43,7 +45,7 @@ function LongitudInputComponent({ longitud, setLength }) {
     <>
       <div>
         <label>Longitud de la contraseña</label>
-        <span>{longitud}</span>
+        <span>{length}</span>
       </div>
 
       <button onClick={handleSetLongitud} name={TYPE_INPUT.RESTA}>
@@ -53,7 +55,7 @@ function LongitudInputComponent({ longitud, setLength }) {
         ref={rangeRef}
         type="range"
         onChange={handleSetLongitud}
-        defaultValue={longitud}
+        defaultValue={length}
         name={TYPE_INPUT.RANGE}
         min={1}
         max={50}

@@ -68,7 +68,7 @@ export const INITIAL_STATE = {
   simbolos: false,
 };
 
-export const passwordReducer = (state, action) => {
+export const checksReducer = (state, action) => {
   const { type, payload } = action;
   switch (type) {
     case "SET_MAYUSCULAS":

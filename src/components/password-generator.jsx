@@ -1,13 +1,20 @@
-import { useState } from "react";
 import MessageSecurity from "./message-security";
-import ContainerInputs from "./container-inputs";
+import ChecksProvider from "./checks-provider";
+import LengthProvider from "./lenght-provider";
+import PasswordInput from "./password-input";
+import CheckInputs from "./check-inputs";
+import LongitudInput from "./longitud-input";
 export default function PasswordGenerator() {
-  const [length, setLength] = useState(1);
-
   return (
     <div>
-      <MessageSecurity length={length} />
-      <ContainerInputs length={length} setLength={setLength} />
+      <LengthProvider>
+        <MessageSecurity />
+        <LongitudInput />
+        <ChecksProvider>
+          <PasswordInput />
+          <CheckInputs />
+        </ChecksProvider>
+      </LengthProvider>
     </div>
   );
 }

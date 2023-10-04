@@ -1,10 +1,12 @@
-import { useCallback } from "react";
+import { memo, useCallback, useContext } from "react";
 import CheckBox from "./check-box";
+import ChecksContext from "../Contexts/checks-context";
 
-export default function CheckInputs({ state, dispatch }) {
-  const checkInputsFalse = (state) => {
+function CheckInputsComponent() {
+  const { state, dispatch } = useContext(ChecksContext);
+  const checkInputsFalse = useCallback((state) => {
     return Object.values(state).filter((value) => value === true).length;
-  };
+  }, []);
 
   const handleChanges = useCallback(
     ({ target }) => {
@@ -14,7 +16,7 @@ export default function CheckInputs({ state, dispatch }) {
         payload: target.checked,
       });
     },
-    [dispatch, state]
+    [checkInputsFalse, dispatch, state]
   );
   return (
     <>
@@ -34,3 +36,6 @@ export default function CheckInputs({ state, dispatch }) {
     </>
   );
 }
+
+const CheckInputs = memo(CheckInputsComponent);
+export default CheckInputs;

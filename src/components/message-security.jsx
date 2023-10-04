@@ -1,6 +1,8 @@
-import { memo, useCallback } from "react";
+import { memo, useCallback, useContext } from "react";
+import LengthContext from "../Contexts/length-contex";
 
-const MessageSecurityComponent = ({ length }) => {
+const MessageSecurityComponent = () => {
+  const { length } = useContext(LengthContext);
   const setSecurityMessage = useCallback(() => {
     if (length < 5) return "Muy poco segura";
     if (length < 8) return "Poco segura";
