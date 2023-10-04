@@ -1,13 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Roboto:wght@300&display=swap");
+
 body {
   padding: 0;
   margin: 0;
+  font-family: Inter, sans-serif;
 }
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   --back-color: #fafafa;
   --principal-color: #ffc93c;
+  --secondatry-color: #3498db;
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 .container {
@@ -15,8 +24,8 @@ body {
   top: 0;
   flex-direction: column;
   align-items: center;
-  background-color: var(--back-color);
   height: 100vh;
+  background-color: var(--back-color);
   justify-content: space-between;
 }
 
@@ -51,9 +60,29 @@ body {
 
 .input-alone {
   width: 100%;
+  padding: 0.5em 0 0.5em 5px;
+  margin: 0 auto;
+  border: 2px solid #3498db;
   border-radius: 10px;
-  padding: 5px;
-  border: 1px black solid;
+  font-size: 16px;
+  transition: border-color 0.3s ease-in-out;
+
+  &:focus {
+    border-color: --var(principal-color);
+    box-shadow: 0 0 5px rgba(255, 107, 107, 0.5);
+  }
+}
+
+.action-buttons-container {
+  position: absolute;
+  top: 2px;
+  bottom: 50%;
+  right: -6px;
+  width: 3.5em;
+  height: 2em;
+  background: rgb(255, 255, 255);
+  border: none;
+  border-radius: 10px;
 }
 
 .button {
@@ -65,11 +94,17 @@ body {
   border: none;
   align-self: center;
   justify-self: center;
+  cursor: pointer;
 }
 
-.regenerate {
-  margin: 0 auto;
-  width: 1em;
+.button .copy {
+  position: absolute;
+  left: -3em;
+}
+
+.regenerate,
+.copy {
+  width: 1.5em;
 }
 
 .real-button {
@@ -88,15 +123,39 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   width: 80%;
+  background-color: var(--principal-color);
+  border-radius: 10px;
   gap: 1em;
   align-items: center;
   justify-content: center;
+  padding: 1em;
+  margin-bottom: 1em;
 }
+
 .checks-container p {
   font-size: 1.2em;
   font-weight: 600;
   margin: 0;
   padding: 0;
+}
+
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  appearance: none;
+  border: 2px solid #3498db;
+  border-radius: 5px;
+  background-color: white;
+  outline: none;
+
+  &:focus {
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.7);
+  }
+
+  &:checked {
+    background-color: var(--secondatry-color);
+    border-color: white;
+  }
 }
 
 .checks {
@@ -117,20 +176,101 @@ body {
   margin-bottom: 2em;
 }
 
+.show-longitud {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.container-input-range {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 .container-input-range button {
-  background-color: var(--principal-color);
-  border-radius: 5em;
-  padding: 0.6em;
-  width: 2.5em;
-  border: 1px black solid;
-  font-size: 1.2em;
-  font-weight: 600;
+  background-color: var(--secondatry-color);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: var(--principal-color);
+  }
+}
+
+.input-range {
+  width: 100px;
+  -webkit-appearance: none;
+  height: 5px;
+  background: #ccc;
+  border-radius: 5px;
+  outline: none;
+  transition: background 0.2s;
+}
+
+.input-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background: #3498db;
+  border-radius: 50%;
   cursor: pointer;
 }
 
-.show-longitud {
-  font-size: 1.2em;
-  font-weight: 600;
-  margin: 0;
-  padding: 0;
+.container-input-range button:active {
+  background-color: #ff6b6b;
+  transform: scale(1.1);
+}
+
+img {
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+@media (min-width: 600px) {
+  .password-container {
+    width: 50%;
+  }
+  .checks-container {
+    width: 100%;
+    margin-bottom: 0;
+    border-radius: 0;
+    flex-direction: column;
+  }
+  .checks {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .checks div {
+    display: flex;
+    flex-direction: row;
+
+    margin: 0 auto;
+  }
+
+  .container-input-length {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2em;
+    gap: 1em;
+  }
+  .input-range {
+    width: 15em;
+  }
+  .container-input-range button {
+    width: 5em;
+  }
 }

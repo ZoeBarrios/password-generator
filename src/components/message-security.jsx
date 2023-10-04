@@ -1,10 +1,10 @@
 import { memo, useCallback, useContext } from "react";
 import LengthContext from "../Contexts/length-contex";
-import ImgMuyPoco from "/public/img/muy-poco.png";
-import ImgPoco from "/public/img/poco.png";
-import ImgBuena from "/public/img/buena.png";
-import ImgSegura from "/public/img/segura.png";
-import ImgMuySegura from "/public/img/muy-segura.png";
+import ImgMuyPoco from "/img/muy-poco.png";
+import ImgPoco from "/img/poco.png";
+import ImgBuena from "/img/buena.png";
+import ImgSegura from "/img/segura.png";
+import ImgMuySegura from "/img/muy-segura.png";
 
 const MessageSecurityComponent = () => {
   const { length } = useContext(LengthContext);

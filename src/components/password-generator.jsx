@@ -11,9 +11,9 @@ export default function PasswordGenerator() {
         <MessageSecurity />
         <ChecksProvider>
           <PasswordInput />
+          <LongitudInput />
           <CheckInputs />
         </ChecksProvider>
-        <LongitudInput />
       </LengthProvider>
     </div>
   );

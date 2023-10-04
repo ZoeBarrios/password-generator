@@ -1,6 +1,7 @@
 import { memo, useCallback } from "react";
 import usePassword from "../customHooks/usePassword";
-import Regenerate from "/public/img/regenerate.png";
+import Regenerate from "/img/regenerate.png";
+import Copy from "/img/copy.png";
 
 const PasswordInputComponent = () => {
   const { password, generatePassword } = usePassword();
@@ -13,30 +14,24 @@ const PasswordInputComponent = () => {
     generatePassword();
   }, [generatePassword]);
 
-  const showPassword = useCallback(() => {
-    if (password.length > 20) {
-      return password.slice(0, 20) + "...";
-    }
-    return password;
-  }, [password]);
-
   return (
     <div className="password-container">
       <div className="input">
         <input
           type="text"
           readOnly={true}
-          value={showPassword()}
+          value={password}
           className="input-alone"
         />
-        <button onClick={handleGeneratePassword} className="button">
-          <img src={Regenerate} className="regenerate" />
-        </button>
+        <div className="action-buttons-container">
+          <button onClick={handleGeneratePassword} className="button">
+            <img src={Regenerate} className="regenerate" />
+          </button>
+          <button onClick={handleCopyPassword} className="button">
+            <img src={Copy} className="copy" />
+          </button>
+        </div>
       </div>
-
-      <button onClick={handleCopyPassword} className="real-button">
-        Copiar
-      </button>
     </div>
   );
 };

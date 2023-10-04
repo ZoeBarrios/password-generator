@@ -1,5 +1,10 @@
 import { memo } from "react";
-
+const NAMES = {
+  numeros: "123",
+  simbolos: "!@#",
+  minusculas: "abc",
+  mayusculas: "ABC",
+};
 function CheckBoxComponent({ handleChanges, name, checked }) {
   return (
     <div>
@@ -10,7 +15,7 @@ function CheckBoxComponent({ handleChanges, name, checked }) {
         onChange={handleChanges}
         checked={checked}
       />
-      <label htmlFor={name}>{name}</label>
+      <label htmlFor={name}>{NAMES[name]}</label>
     </div>
   );
 }
