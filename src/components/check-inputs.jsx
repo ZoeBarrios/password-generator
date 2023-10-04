@@ -20,18 +20,20 @@ function CheckInputsComponent() {
   );
   return (
     <>
-      <div>
+      <div className="checks-container">
         <p>Caracteres usados</p>
-        {Object.entries(state).map(([key, value]) => {
-          return (
-            <CheckBox
-              key={key}
-              handleChanges={handleChanges}
-              name={key}
-              checked={state[key]}
-            />
-          );
-        })}
+        <div className="checks">
+          {Object.entries(state).map(([key, value]) => {
+            return (
+              <CheckBox
+                key={key}
+                handleChanges={handleChanges}
+                name={key}
+                checked={state[key]}
+              />
+            );
+          })}
+        </div>
       </div>
     </>
   );

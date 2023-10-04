@@ -6,14 +6,14 @@ import CheckInputs from "./check-inputs";
 import LongitudInput from "./longitud-input";
 export default function PasswordGenerator() {
   return (
-    <div>
+    <div className="container">
       <LengthProvider>
         <MessageSecurity />
-        <LongitudInput />
         <ChecksProvider>
           <PasswordInput />
           <CheckInputs />
         </ChecksProvider>
+        <LongitudInput />
       </LengthProvider>
     </div>
   );

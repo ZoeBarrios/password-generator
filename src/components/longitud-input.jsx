@@ -41,28 +41,31 @@ function LongitudInputComponent() {
     },
     [setLength]
   );
+
   return (
     <>
-      <div>
-        <label>Longitud de la contraseña</label>
+      <div className="show-longitud">
+        <label>Longitud de la contraseña: </label>
         <span>{length}</span>
       </div>
-
-      <button onClick={handleSetLongitud} name={TYPE_INPUT.RESTA}>
-        -
-      </button>
-      <input
-        ref={rangeRef}
-        type="range"
-        onChange={handleSetLongitud}
-        defaultValue={length}
-        name={TYPE_INPUT.RANGE}
-        min={1}
-        max={50}
-      ></input>
-      <button onClick={handleSetLongitud} name={TYPE_INPUT.SUMA}>
-        +
-      </button>
+      <div className="container-input-range">
+        <button onClick={handleSetLongitud} name={TYPE_INPUT.RESTA}>
+          -
+        </button>
+        <input
+          ref={rangeRef}
+          type="range"
+          onChange={handleSetLongitud}
+          defaultValue={length}
+          name={TYPE_INPUT.RANGE}
+          min={1}
+          max={50}
+          className="input-range"
+        ></input>
+        <button onClick={handleSetLongitud} name={TYPE_INPUT.SUMA}>
+          +
+        </button>
+      </div>
     </>
   );
 }

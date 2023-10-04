@@ -2,8 +2,7 @@ import { memo } from "react";
 
 function CheckBoxComponent({ handleChanges, name, checked }) {
   return (
-    <>
-      <label htmlFor={name}>{name}</label>
+    <div>
       <input
         type="checkbox"
         name={name}
@@ -11,7 +10,8 @@ function CheckBoxComponent({ handleChanges, name, checked }) {
         onChange={handleChanges}
         checked={checked}
       />
-    </>
+      <label htmlFor={name}>{name}</label>
+    </div>
   );
 }
 

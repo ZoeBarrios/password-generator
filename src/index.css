@@ -1,69 +1,136 @@
+body {
+  padding: 0;
+  margin: 0;
+}
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+  --back-color: #fafafa;
+  --principal-color: #ffc93c;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
+.container {
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  top: 0;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--back-color);
+  height: 100vh;
+  justify-content: space-between;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.messages-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 10rem;
+  margin-top: 2em;
+}
+.emoji-img {
+  height: 50%;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+.emoji-img + h1 {
+  font-size: 2em;
+}
+
+.password-container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  gap: 1em;
+  align-items: center;
+}
+
+.input {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.input-alone {
+  width: 100%;
+  border-radius: 10px;
+  padding: 5px;
+  border: 1px black solid;
+}
+
+.button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 4px;
+  background: transparent;
+  border: none;
+  align-self: center;
+  justify-self: center;
+}
+
+.regenerate {
+  margin: 0 auto;
+  width: 1em;
+}
+
+.real-button {
+  background-color: var(--principal-color);
+  border-radius: 10px;
+  padding: 5px;
+  border: 1px black solid;
+  width: 50%;
+  font-size: 1.2em;
+  font-weight: 600;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.checks-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 80%;
+  gap: 1em;
+  align-items: center;
+  justify-content: center;
+}
+.checks-container p {
+  font-size: 1.2em;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+}
+
+.checks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  flex-wrap: wrap;
+  gap: 1em;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-input-range {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  margin-bottom: 2em;
+}
+
+.container-input-range button {
+  background-color: var(--principal-color);
+  border-radius: 5em;
+  padding: 0.6em;
+  width: 2.5em;
+  border: 1px black solid;
+  font-size: 1.2em;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.show-longitud {
+  font-size: 1.2em;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
 }
