@@ -13,8 +13,8 @@ function SecutiryText({ length }) {
     if (length < 5) return "Muy débil";
     if (length < 8) return "Débil";
     if (length < 10) return "Normal";
-    if (length < 12) return "Fuerte";
-    return "Muy fuerte";
+    if (length < 12) return "Segura";
+    return "Muy segura";
   }, [length]);
   return (
     <span className="color" style={{ backgroundColor: setSecurityColor() }}>
