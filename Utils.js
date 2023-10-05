@@ -61,6 +61,19 @@ export const options = Object.freeze({
   simbolos: ["!", "#", "$", "%", "&", "(", ")", "*", "+", "-", "."],
 });
 
+export const TYPE_INPUT = {
+  SUMA: "SUMA",
+  RESTA: "RESTA",
+  RANGE: "RANGE",
+};
+
+export const NAMES = {
+  numeros: "Números",
+  simbolos: "Símbolos",
+  minusculas: "Minúsculas",
+  mayusculas: "Mayúsculas",
+};
+
 export const INITIAL_STATE = {
   mayusculas: false,
   minusculas: true,

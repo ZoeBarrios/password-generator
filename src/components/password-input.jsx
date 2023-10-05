@@ -4,6 +4,8 @@ import Regenerate from "/img/regenerate.png";
 import Copy from "/img/copy.png";
 import LengthContext from "../Contexts/length-contex";
 import { ToastContainer, toast } from "react-toastify";
+import ActionButton from "./action-button";
+import SecutiryText from "./security-text";
 
 const PasswordInputComponent = () => {
   const [rotate, setRotate] = useState(false);
@@ -28,22 +30,6 @@ const PasswordInputComponent = () => {
     }, 1000);
   }, [generatePassword]);
 
-  const setSecurityColor = useCallback(() => {
-    if (length < 5) return "red";
-    if (length < 8) return "orange";
-    if (length < 10) return "yellow";
-    if (length < 12) return "green";
-    return "blue";
-  }, [length]);
-
-  const setSecurityText = useCallback(() => {
-    if (length < 5) return "Muy débil";
-    if (length < 8) return "Débil";
-    if (length < 10) return "Normal";
-    if (length < 12) return "Fuerte";
-    return "Muy fuerte";
-  }, [length]);
-
   return (
     <div className="input">
       <ToastContainer />
@@ -52,20 +38,20 @@ const PasswordInputComponent = () => {
           <span>{password}</span>
         </div>
         <div className="action-buttons-container">
-          <button onClick={handleGeneratePassword} className="button">
-            <img
-              src={Regenerate}
-              className={`regenerate ${rotate ? "rotated" : null}`}
-            />
-          </button>
-          <button onClick={handleCopyPassword} className="button">
-            <img src={Copy} className="copy" />
-          </button>
+          <ActionButton
+            handleClick={handleGeneratePassword}
+            icon={Regenerate}
+            className={`regenerate ${rotate ? "rotated" : null}`}
+          />
+
+          <ActionButton
+            handleClick={handleCopyPassword}
+            icon={Copy}
+            className="copy"
+          />
         </div>
       </div>
-      <span className="color" style={{ backgroundColor: setSecurityColor() }}>
-        <p>{setSecurityText()}</p>
-      </span>
+      <SecutiryText length={length} />
     </div>
   );
 };

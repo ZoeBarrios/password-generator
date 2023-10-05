@@ -1,10 +1,6 @@
 import { memo } from "react";
-const NAMES = {
-  numeros: "Números",
-  simbolos: "Símbolos",
-  minusculas: "Minúsculas",
-  mayusculas: "Mayúsculas",
-};
+import { NAMES } from "../../Utils";
+
 function CheckBoxComponent({ handleChanges, name, checked }) {
   return (
     <div>

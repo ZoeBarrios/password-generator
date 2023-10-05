@@ -1,11 +1,6 @@
 import { memo, useCallback, useContext, useRef } from "react";
 import LengthContext from "../Contexts/length-contex";
-
-const TYPE_INPUT = {
-  SUMA: "SUMA",
-  RESTA: "RESTA",
-  RANGE: "RANGE",
-};
+import { TYPE_INPUT } from "../../Utils";
 
 function LongitudInputComponent() {
   const { length, setLength } = useContext(LengthContext);
