@@ -1,13 +1,33 @@
-import { memo, useCallback, useContext } from "react";
+import { memo, useCallback, useContext, useEffect } from "react";
 import CheckBox from "./check-box";
 import ChecksContext from "../Contexts/checks-context";
+import PasswordUserContext from "../Contexts/password-user";
+import { options } from "../../Utils";
 
 function CheckInputsComponent() {
   const { state, dispatch } = useContext(ChecksContext);
-
+  const { passwordUser } = useContext(PasswordUserContext);
   const checkInputsFalse = useCallback((state) => {
     return Object.values(state).filter((value) => value === true).length;
   }, []);
+
+  useEffect(() => {
+    const checkIfExist = (array) => {
+      return passwordUser.split("").some((char) => array.includes(char));
+    };
+    if (passwordUser) {
+      const newState = {
+        mayusculas: checkIfExist(options.mayusculas),
+        minusculas: checkIfExist(options.minusculas),
+        numeros: checkIfExist(options.numeros),
+        simbolos: checkIfExist(options.simbolos),
+      };
+      dispatch({
+        type: "SET_STATE",
+        payload: newState,
+      });
+    }
+  }, [dispatch, passwordUser]);
 
   const handleChanges = useCallback(
     ({ target }) => {

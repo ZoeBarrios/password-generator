@@ -3,7 +3,6 @@ import { options } from "../../Utils";
 
 export default function usePassword(length, state) {
   const [password, setPassword] = useState("");
-
   const generatePassword = useCallback(() => {
     const password = [];
 
@@ -27,5 +26,5 @@ export default function usePassword(length, state) {
 
   useEffect(generatePassword, [generatePassword, state, length]);
 
-  return { password, generatePassword };
+  return { password, generatePassword, setPassword };
 }

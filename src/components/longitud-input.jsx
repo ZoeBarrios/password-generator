@@ -1,9 +1,11 @@
 import { memo, useCallback, useContext, useRef } from "react";
 import LengthContext from "../Contexts/length-contex";
+import PasswordInputContext from "../Contexts/password-user";
 import { TYPE_INPUT } from "../../Utils";
 
 function LongitudInputComponent() {
   const { length, setLength } = useContext(LengthContext);
+  const { setPasswordUser } = useContext(PasswordInputContext);
   const rangeRef = useRef(null);
   const handleSetLongitud = useCallback(
     ({ target }) => {
@@ -33,8 +35,9 @@ function LongitudInputComponent() {
         default:
           break;
       }
+      setPasswordUser("");
     },
-    [setLength]
+    [setLength, setPasswordUser]
   );
 
   return (
@@ -54,7 +57,7 @@ function LongitudInputComponent() {
           ref={rangeRef}
           type="range"
           onChange={handleSetLongitud}
-          defaultValue={length}
+          value={length}
           name={TYPE_INPUT.RANGE}
           min={1}
           max={50}

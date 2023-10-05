@@ -92,6 +92,8 @@ export const checksReducer = (state, action) => {
       return { ...state, numeros: payload };
     case "SET_SIMBOLOS":
       return { ...state, simbolos: payload };
+    case "SET_STATE":
+      return payload;
     default:
       return state;
   }

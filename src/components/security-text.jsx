@@ -1,24 +1,53 @@
-import { memo, useCallback } from "react";
+import { memo, useCallback, useEffect, useRef } from "react";
 
-function SecutiryText({ length }) {
+function SecutiryText({ length, password }) {
+  const spanRef = useRef(null);
+  const textRef = useRef(null);
+
   const setSecurityColor = useCallback(() => {
-    if (length < 5) return "red";
-    if (length < 8) return "orange";
-    if (length < 10) return "yellow";
-    if (length < 12) return "green";
-    return "blue";
-  }, [length]);
+    let longitud = length;
+    if (password) {
+      longitud = password.length;
+    }
+    let color = "blue";
+    if (longitud < 5) {
+      color = "red";
+    } else if (longitud < 8) {
+      color = "orange";
+    } else if (longitud < 10) {
+      color = "yellow";
+    } else if (longitud < 12) {
+      color = "green";
+    }
+
+    spanRef.current.style.backgroundColor = color;
+  }, [length, password]);
 
   const setSecurityText = useCallback(() => {
-    if (length < 5) return "Muy débil";
-    if (length < 8) return "Débil";
-    if (length < 10) return "Normal";
-    if (length < 12) return "Segura";
-    return "Muy segura";
-  }, [length]);
+    let longitud = length;
+    if (password) {
+      longitud = password.length;
+    }
+    let text = "Muy segura";
+    if (longitud < 5) {
+      text = "Muy débil";
+    } else if (longitud < 8) {
+      text = "Débil";
+    } else if (longitud < 10) {
+      text = "Normal";
+    } else if (longitud < 12) {
+      text = "Segura";
+    }
+    textRef.current.textContent = text;
+  }, [length, password]);
+
+  useEffect(() => {
+    setSecurityColor();
+    setSecurityText();
+  }, [length, password, setSecurityColor, setSecurityText]);
   return (
-    <span className="color" style={{ backgroundColor: setSecurityColor() }}>
-      <p>{setSecurityText()}</p>
+    <span className="color" ref={spanRef}>
+      <p ref={textRef}></p>
     </span>
   );
 }
