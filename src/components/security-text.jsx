@@ -1,6 +1,6 @@
-import { useCallback } from "react";
+import { memo, useCallback } from "react";
 
-export default function SecutiryText({ length }) {
+function SecutiryText({ length }) {
   const setSecurityColor = useCallback(() => {
     if (length < 5) return "red";
     if (length < 8) return "orange";
@@ -22,3 +22,6 @@ export default function SecutiryText({ length }) {
     </span>
   );
 }
+
+const SecurityText = memo(SecutiryText);
+export default SecurityText;

@@ -6,11 +6,14 @@ import LengthContext from "../Contexts/length-contex";
 import { ToastContainer, toast } from "react-toastify";
 import ActionButton from "./action-button";
 import SecutiryText from "./security-text";
+import ChecksContext from "../Contexts/checks-context";
 
 const PasswordInputComponent = () => {
   const [rotate, setRotate] = useState(false);
   const { length } = useContext(LengthContext);
-  const { password, generatePassword } = usePassword();
+  const { state } = useContext(ChecksContext);
+  const { password, generatePassword } = usePassword(length, state);
+
   const handleCopyPassword = useCallback(() => {
     navigator.clipboard.writeText(password);
     toast.success("Contraseña copiada al portapapeles", {

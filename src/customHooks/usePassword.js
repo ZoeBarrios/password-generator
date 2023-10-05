@@ -1,12 +1,8 @@
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { options } from "../../Utils";
-import ChecksContext from "../Contexts/checks-context";
-import LengthContext from "../Contexts/length-contex";
 
-export default function usePassword() {
+export default function usePassword(length, state) {
   const [password, setPassword] = useState("");
-  const { length } = useContext(LengthContext);
-  const { state } = useContext(ChecksContext);
 
   const generatePassword = useCallback(() => {
     const password = [];
