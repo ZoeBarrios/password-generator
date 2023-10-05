@@ -30,7 +30,7 @@ const PasswordInputComponent = () => {
     generatePassword();
     setTimeout(() => {
       setRotate(false);
-    }, 1000);
+    }, 200);
   }, [generatePassword]);
 
   return (
