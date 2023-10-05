@@ -1,9 +1,12 @@
-import { memo, useCallback } from "react";
+import { memo, useCallback, useContext, useState } from "react";
 import usePassword from "../customHooks/usePassword";
 import Regenerate from "/img/regenerate.png";
 import Copy from "/img/copy.png";
+import LengthContext from "../Contexts/length-contex";
 
 const PasswordInputComponent = () => {
+  const [rotate, setRotate] = useState(false);
+  const { length } = useContext(LengthContext);
   const { password, generatePassword } = usePassword();
   const handleCopyPassword = useCallback(() => {
     navigator.clipboard.writeText(password);
@@ -11,27 +14,43 @@ const PasswordInputComponent = () => {
   }, [password]);
 
   const handleGeneratePassword = useCallback(() => {
+    setRotate(true);
     generatePassword();
+    setTimeout(() => {
+      setRotate(false);
+    }, 1000);
   }, [generatePassword]);
 
+  const setSecurityColor = useCallback(() => {
+    if (length < 5) return "red";
+    if (length < 8) return "orange";
+    if (length < 10) return "yellow";
+    if (length < 12) return "green";
+    return "blue";
+  }, [length]);
+
   return (
-    <div className="password-container">
-      <div className="input">
-        <input
-          type="text"
-          readOnly={true}
-          value={password}
-          className="input-alone"
-        />
+    <div className="input">
+      <div className="container-input-password">
+        <div className="input-alone">
+          <span>{password}</span>
+        </div>
         <div className="action-buttons-container">
           <button onClick={handleGeneratePassword} className="button">
-            <img src={Regenerate} className="regenerate" />
+            <img
+              src={Regenerate}
+              className={`regenerate ${rotate ? "rotated" : null}`}
+            />
           </button>
           <button onClick={handleCopyPassword} className="button">
             <img src={Copy} className="copy" />
           </button>
         </div>
       </div>
+      <span
+        className="color"
+        style={{ backgroundColor: setSecurityColor() }}
+      ></span>
     </div>
   );
 };

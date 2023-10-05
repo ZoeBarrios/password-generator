@@ -25,86 +25,128 @@ body {
   flex-direction: column;
   align-items: center;
   height: 100vh;
-  background-color: var(--back-color);
-  justify-content: space-between;
+  background-color: var(--secondatry-color);
+  justify-content: space-around;
 }
 
 .messages-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 10rem;
-  margin-top: 2em;
 }
 .emoji-img {
-  height: 50%;
+  height: 5em;
 }
 
 .emoji-img + h1 {
   font-size: 2em;
-}
-
-.password-container {
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-  gap: 1em;
-  align-items: center;
+  color: white;
+  margin-left: 20px;
 }
 
 .input {
   position: relative;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 70%;
+  height: 3em;
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  font-size: 1.2em;
+  background-color: white;
+}
+.input-alone span {
+  margin-left: 10px;
+  font-size: 1em;
+  height: 1.5em;
+  overflow: hidden;
+}
+.container-input-password {
   width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.input-alone {
+.color {
   width: 100%;
-  padding: 0.5em 0 0.5em 5px;
-  margin: 0 auto;
-  border: 2px solid #3498db;
-  border-radius: 10px;
-  font-size: 16px;
-  transition: border-color 0.3s ease-in-out;
+  height: 1em;
+  transition: background-color 0.3s ease;
+}
 
-  &:focus {
-    border-color: --var(principal-color);
-    box-shadow: 0 0 5px rgba(255, 107, 107, 0.5);
-  }
+.container-input-length {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  margin-left: 5em;
 }
 
 .action-buttons-container {
   position: absolute;
-  top: 2px;
-  bottom: 50%;
-  right: -6px;
-  width: 3.5em;
-  height: 2em;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   background: rgb(255, 255, 255);
   border: none;
   border-radius: 10px;
 }
 
-.button {
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin-top: 4px;
-  background: transparent;
-  border: none;
-  align-self: center;
-  justify-self: center;
-  cursor: pointer;
+.container-inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  gap: 1em;
+  width: 70%;
+  padding-top: 1em;
 }
 
-.button .copy {
-  position: absolute;
-  left: -3em;
+.container-inputs h2 {
+  font-size: 1.5em;
+  font-weight: 300;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  margin-left: 2em;
+}
+.borde {
+  border-bottom: 1px solid #ccc;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.button {
+  color: #fff;
+  background: transparent;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: transform 0.3 ease;
+  transform-origin: center;
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 .regenerate,
 .copy {
   width: 1.5em;
+}
+
+.rotated {
+  transition: transform 0.3s ease-in-out;
+  transform: rotate(-360deg);
 }
 
 .real-button {
@@ -118,15 +160,21 @@ body {
   cursor: pointer;
 }
 
+.messages-container h1 {
+  font-size: 1.5em;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+}
+
 .checks-container {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
   width: 80%;
-  background-color: var(--principal-color);
+  flex-direction: column;
+  flex-wrap: wrap;
   border-radius: 10px;
   gap: 1em;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   padding: 1em;
   margin-bottom: 1em;
@@ -158,13 +206,22 @@ input[type="checkbox"] {
   }
 }
 
-.checks {
+.inputs-control {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  flex-wrap: wrap;
+  width: 100%;
+}
+
+.checks {
+  display: flex;
+  flex-direction: column;
   gap: 1em;
+}
+.checks div {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
   align-items: center;
-  justify-content: center;
 }
 
 .container-input-range {
@@ -180,19 +237,16 @@ input[type="checkbox"] {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+  font-size: large;
+  text-align: center;
 }
 
-.container-input-range {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
 .container-input-range button {
   background-color: var(--secondatry-color);
   color: #fff;
   border: none;
   border-radius: 5px;
-  padding: 5px 10px;
+  padding: 1em;
   cursor: pointer;
   transition: background-color 0.3s ease;
 
@@ -201,8 +255,16 @@ input[type="checkbox"] {
   }
 }
 
+.input-alone {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+}
+
 .input-range {
-  width: 100px;
+  width: 100%;
   -webkit-appearance: none;
   height: 5px;
   background: #ccc;
@@ -226,51 +288,44 @@ input[type="checkbox"] {
   transform: scale(1.1);
 }
 
-img {
-  transition: all 0.3s ease-in-out;
-
-  &:hover {
-    transform: scale(1.1);
+@media (max-width: 780px) {
+  .inputs-control {
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr;
+    height: 100%;
   }
-}
-
-@media (min-width: 600px) {
-  .password-container {
-    width: 50%;
+  .container-inputs {
+    height: 70%;
+  }
+  .container-inputs h2 {
+    margin-left: 0;
+    text-align: center;
+  }
+  .container-input-length {
+    margin-left: 0;
   }
   .checks-container {
-    width: 100%;
-    margin-bottom: 0;
-    border-radius: 0;
-    flex-direction: column;
-  }
-  .checks {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    width: 100%;
-    justify-content: space-around;
     align-items: center;
+    width: 100%;
+    padding: 0;
+  }
+
+  .checks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
 
   .checks div {
-    display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
+  }
+}
 
-    margin: 0 auto;
+@media (max-width: 370px) {
+  .container-inputs {
+    width: 90%;
   }
 
-  .container-input-length {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 2em;
-    gap: 1em;
-  }
-  .input-range {
-    width: 15em;
-  }
-  .container-input-range button {
-    width: 5em;
+  .input {
+    width: 90%;
   }
 }

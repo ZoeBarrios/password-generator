@@ -45,8 +45,7 @@ function LongitudInputComponent() {
   return (
     <div className="container-input-length">
       <div className="show-longitud">
-        <label>Longitud de la contraseña: </label>
-        <span>{length}</span>
+        <label>Longitud de la contraseña: {length}</label>
       </div>
       <div className="container-input-range">
         <button

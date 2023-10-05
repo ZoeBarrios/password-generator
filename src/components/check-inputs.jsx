@@ -41,7 +41,6 @@ function CheckInputsComponent() {
 
   return (
     <div className="checks-container">
-      <p>Caracteres usados</p>
       <div className="checks">
         {Object.entries(state).map(([key, value]) => {
           return (

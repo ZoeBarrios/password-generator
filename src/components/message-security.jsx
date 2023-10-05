@@ -8,13 +8,6 @@ import ImgMuySegura from "/img/muy-segura.png";
 
 const MessageSecurityComponent = () => {
   const { length } = useContext(LengthContext);
-  const setSecurityMessage = useCallback(() => {
-    if (length < 5) return "Muy poco segura";
-    if (length < 8) return "Poco segura";
-    if (length < 10) return "Buena";
-    if (length < 12) return "Segura";
-    return "Muy segura";
-  }, [length]);
 
   const setImgSource = useCallback(() => {
     if (length < 5) return ImgMuyPoco;
@@ -26,8 +19,7 @@ const MessageSecurityComponent = () => {
 
   return (
     <div className="messages-container">
-      <img src={setImgSource()} className="emoji-img" />
-      <h1>{setSecurityMessage()}</h1>
+      <img src={setImgSource()} className="emoji-img enter-from-side" />
     </div>
   );
 };
