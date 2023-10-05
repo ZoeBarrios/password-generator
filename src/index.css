@@ -75,6 +75,15 @@ body {
   transition: background-color 0.3s ease;
 }
 
+.color p {
+  margin: 0;
+  padding: 0;
+  font-size: 0.8em;
+  font-weight: 600;
+  text-align: center;
+  color: white;
+}
+
 .container-input-length {
   display: flex;
   flex-direction: column;

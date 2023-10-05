@@ -3,6 +3,7 @@ import usePassword from "../customHooks/usePassword";
 import Regenerate from "/img/regenerate.png";
 import Copy from "/img/copy.png";
 import LengthContext from "../Contexts/length-contex";
+import { ToastContainer, toast } from "react-toastify";
 
 const PasswordInputComponent = () => {
   const [rotate, setRotate] = useState(false);
@@ -10,7 +11,13 @@ const PasswordInputComponent = () => {
   const { password, generatePassword } = usePassword();
   const handleCopyPassword = useCallback(() => {
     navigator.clipboard.writeText(password);
-    alert("Copiado");
+    toast.success("Contraseña copiada al portapapeles", {
+      position: "top-right",
+      autoClose: 1000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+    });
   }, [password]);
 
   const handleGeneratePassword = useCallback(() => {
@@ -29,8 +36,17 @@ const PasswordInputComponent = () => {
     return "blue";
   }, [length]);
 
+  const setSecurityText = useCallback(() => {
+    if (length < 5) return "Muy débil";
+    if (length < 8) return "Débil";
+    if (length < 10) return "Normal";
+    if (length < 12) return "Fuerte";
+    return "Muy fuerte";
+  }, [length]);
+
   return (
     <div className="input">
+      <ToastContainer />
       <div className="container-input-password">
         <div className="input-alone">
           <span>{password}</span>
@@ -47,10 +63,9 @@ const PasswordInputComponent = () => {
           </button>
         </div>
       </div>
-      <span
-        className="color"
-        style={{ backgroundColor: setSecurityColor() }}
-      ></span>
+      <span className="color" style={{ backgroundColor: setSecurityColor() }}>
+        <p>{setSecurityText()}</p>
+      </span>
     </div>
   );
 };
