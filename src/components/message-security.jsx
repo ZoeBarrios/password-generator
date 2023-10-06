@@ -6,7 +6,7 @@ import ImgBuena from "/img/buena.png";
 import ImgSegura from "/img/segura.png";
 import ImgMuySegura from "/img/muy-segura.png";
 
-const MessageSecurityComponent = () => {
+export default function MessageSecurityComponent() {
   const { length } = useContext(LengthContext);
 
   const setImgSource = useCallback(() => {
@@ -22,7 +22,4 @@ const MessageSecurityComponent = () => {
       <img src={setImgSource()} className="emoji-img enter-from-side" />
     </div>
   );
-};
-
-const MessageSecurity = memo(MessageSecurityComponent);
-export default MessageSecurity;
+}

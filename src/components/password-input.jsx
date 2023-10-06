@@ -1,11 +1,4 @@
-import {
-  memo,
-  useCallback,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { useCallback, useContext, useEffect, useRef, useState } from "react";
 import Regenerate from "/img/regenerate.png";
 import Copy from "/img/copy.png";
 import LengthContext from "../Contexts/length-contex";
@@ -16,7 +9,7 @@ import usePassword from "../customHooks/usePassword";
 import ChecksContext from "../Contexts/checks-context";
 import PasswordInputContext from "../Contexts/password-user";
 
-const PasswordInputComponent = () => {
+export default function PasswordInput() {
   const [rotate, setRotate] = useState(false);
   const { length, setLength } = useContext(LengthContext);
   const { state } = useContext(ChecksContext);
@@ -93,7 +86,4 @@ const PasswordInputComponent = () => {
       </div>
     </div>
   );
-};
-
-const PasswordInput = memo(PasswordInputComponent);
-export default PasswordInput;
+}

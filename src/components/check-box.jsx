@@ -1,7 +1,6 @@
-import { memo } from "react";
 import { NAMES } from "../../Utils";
 
-function CheckBoxComponent({ handleChanges, name, checked }) {
+export function CheckBoxComponent({ handleChanges, name, checked }) {
   return (
     <div>
       <label htmlFor={name}>{NAMES[name]}</label>
@@ -15,6 +14,3 @@ function CheckBoxComponent({ handleChanges, name, checked }) {
     </div>
   );
 }
-
-const CheckBox = memo(CheckBoxComponent);
-export default CheckBox;

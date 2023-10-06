@@ -1,10 +1,10 @@
-import { memo, useCallback, useContext, useEffect } from "react";
+import { useCallback, useContext, useEffect } from "react";
 import CheckBox from "./check-box";
 import ChecksContext from "../Contexts/checks-context";
 import PasswordUserContext from "../Contexts/password-user";
 import { options } from "../../Utils";
 
-function CheckInputsComponent() {
+export default function CheckInputs() {
   const { state, dispatch } = useContext(ChecksContext);
   const { passwordUser } = useContext(PasswordUserContext);
   const checkInputsFalse = useCallback((state) => {
@@ -76,6 +76,3 @@ function CheckInputsComponent() {
     </div>
   );
 }
-
-const CheckInputs = memo(CheckInputsComponent);
-export default CheckInputs;

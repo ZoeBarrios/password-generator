@@ -1,9 +1,9 @@
-import { memo, useCallback, useContext, useRef } from "react";
+import { useCallback, useContext, useRef } from "react";
 import LengthContext from "../Contexts/length-contex";
 import PasswordInputContext from "../Contexts/password-user";
 import { TYPE_INPUT } from "../../Utils";
 
-function LongitudInputComponent() {
+export default function LongitudInputComponent() {
   const { length, setLength } = useContext(LengthContext);
   const { setPasswordUser } = useContext(PasswordInputContext);
   const rangeRef = useRef(null);
@@ -74,6 +74,3 @@ function LongitudInputComponent() {
     </div>
   );
 }
-
-const LongitudInput = memo(LongitudInputComponent);
-export default LongitudInput;
