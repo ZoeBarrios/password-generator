@@ -52,9 +52,12 @@ export default function PasswordInput() {
     }, 200);
   }, [generatePassword, setPasswordUser]);
 
-  const handleChange = (e) => {
-    setPasswordUser(e.target.value);
-  };
+  const handleChange = useCallback(
+    (e) => {
+      setPasswordUser(e.target.value);
+    },
+    [setPasswordUser]
+  );
 
   return (
     <div className="container-principal">
