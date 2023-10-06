@@ -15,7 +15,7 @@ function SecutiryText({ length, password }) {
     } else if (longitud < 8) {
       color = "orange";
     } else if (longitud < 10) {
-      color = "yellow";
+      color = "#a2c11c";
     } else if (longitud < 12) {
       color = "green";
     }

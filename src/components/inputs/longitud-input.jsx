@@ -1,4 +1,4 @@
-import { useCallback, useContext, useRef } from "react";
+import { useCallback, useContext, useId, useRef } from "react";
 import LengthContext from "../../Contexts/length-contex";
 import PasswordInputContext from "../../Contexts/password-user";
 import { TYPE_INPUT } from "../../../Utils";
@@ -6,6 +6,7 @@ import { TYPE_INPUT } from "../../../Utils";
 export default function LongitudInputComponent() {
   const { length, setLength } = useContext(LengthContext);
   const { setPasswordUser } = useContext(PasswordInputContext);
+  const inputId = useId();
   const rangeRef = useRef(null);
   const handleSetLongitud = useCallback(
     ({ target }) => {
@@ -43,7 +44,7 @@ export default function LongitudInputComponent() {
   return (
     <div className="container-input-length">
       <div className="show-longitud">
-        <label>Longitud de la contraseña: {length}</label>
+        <p>Longitud de la contraseña: {length}</p>
       </div>
       <div className="container-input-range">
         <button
@@ -54,6 +55,7 @@ export default function LongitudInputComponent() {
           -
         </button>
         <input
+          id={inputId}
           ref={rangeRef}
           type="range"
           onChange={handleSetLongitud}

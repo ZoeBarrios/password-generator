@@ -66,6 +66,7 @@ export default function PasswordInput() {
         <ToastContainer />
         <div className="container-input-password">
           <input
+            name="input"
             type="text"
             className="input-alone"
             onChange={handleChange}

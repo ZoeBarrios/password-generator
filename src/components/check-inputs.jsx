@@ -62,7 +62,7 @@ export default function CheckInputs() {
   return (
     <div className="checks-container">
       <div className="checks">
-        {Object.entries(state).map(([key, value]) => {
+        {Object.entries(state).map(([key]) => {
           return (
             <CheckBox
               key={key}
