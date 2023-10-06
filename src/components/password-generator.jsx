@@ -10,6 +10,7 @@ export default function PasswordGenerator() {
     <div className="container">
       <LengthProvider>
         <MessageSecurity />
+
         <PasswordUserProvider>
           <ChecksProvider>
             <PasswordInput />

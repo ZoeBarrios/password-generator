@@ -64,30 +64,33 @@ const PasswordInputComponent = () => {
   };
 
   return (
-    <div className="input">
-      <ToastContainer />
-      <div className="container-input-password">
-        <input
-          type="text"
-          className="input-alone"
-          onChange={handleChange}
-          ref={inputRef}
-        />
-        <div className="action-buttons-container">
-          <ActionButton
-            handleClick={handleGeneratePassword}
-            icon={Regenerate}
-            className={`regenerate ${rotate ? "rotated" : null}`}
+    <div className="container-principal">
+      <p className="title">Cree o verifique su contraseña</p>
+      <div className="input">
+        <ToastContainer />
+        <div className="container-input-password">
+          <input
+            type="text"
+            className="input-alone"
+            onChange={handleChange}
+            ref={inputRef}
           />
+          <div className="action-buttons-container">
+            <ActionButton
+              handleClick={handleGeneratePassword}
+              icon={Regenerate}
+              className={`regenerate ${rotate ? "rotated" : null}`}
+            />
 
-          <ActionButton
-            handleClick={handleCopyPassword}
-            icon={Copy}
-            className="copy"
-          />
+            <ActionButton
+              handleClick={handleCopyPassword}
+              icon={Copy}
+              className="copy"
+            />
+          </div>
         </div>
+        <SecutiryText length={length} password={passwordUser} />
       </div>
-      <SecutiryText length={length} password={passwordUser} />
     </div>
   );
 };
