@@ -1,6 +1,6 @@
 import { NAMES } from "../../Utils";
 
-export function CheckBoxComponent({ handleChanges, name, checked }) {
+export default function CheckBox({ handleChanges, name, checked }) {
   return (
     <div>
       <label htmlFor={name}>{NAMES[name]}</label>

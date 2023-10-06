@@ -360,3 +360,9 @@ input[type="checkbox"] {
     width: 90%;
   }
 }
+
+@media (max-height: 800px) and (max-width: 780px) {
+  .container-inputs {
+    height: 60%;
+  }
+}
