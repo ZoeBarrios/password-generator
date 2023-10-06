@@ -81,18 +81,26 @@ export const INITIAL_STATE = {
   simbolos: false,
 };
 
+export const ACTIONS = {
+  SET_MAYUSCULAS: "SET_MAYUSCULAS",
+  SET_MINUSCULAS: "SET_MINUSCULAS",
+  SET_NUMEROS: "SET_NUMEROS",
+  SET_SIMBOLOS: "SET_SIMBOLOS",
+  SET_STATE: "SET_STATE",
+};
+
 export const checksReducer = (state, action) => {
   const { type, payload } = action;
   switch (type) {
-    case "SET_MAYUSCULAS":
+    case ACTIONS.SET_MAYUSCULAS:
       return { ...state, mayusculas: payload };
-    case "SET_MINUSCULAS":
+    case ACTIONS.SET_MINUSCULAS:
       return { ...state, minusculas: payload };
-    case "SET_NUMEROS":
+    case ACTIONS.SET_NUMEROS:
       return { ...state, numeros: payload };
-    case "SET_SIMBOLOS":
+    case ACTIONS.SET_SIMBOLOS:
       return { ...state, simbolos: payload };
-    case "SET_STATE":
+    case ACTIONS.SET_STATE:
       return payload;
     default:
       return state;

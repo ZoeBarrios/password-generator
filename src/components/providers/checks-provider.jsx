@@ -1,6 +1,6 @@
 import { useReducer } from "react";
-import { INITIAL_STATE, checksReducer } from "../../Utils";
-import ChecksContext from "../Contexts/checks-context";
+import { INITIAL_STATE, checksReducer } from "../../../Utils";
+import ChecksContext from "../../Contexts/checks-context";
 
 export default function ChecksProvider({ children }) {
   const [state, dispatch] = useReducer(checksReducer, INITIAL_STATE);

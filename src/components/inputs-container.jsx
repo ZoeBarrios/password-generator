@@ -1,5 +1,5 @@
 import CheckInputs from "./check-inputs";
-import LongitudInput from "./longitud-input";
+import LongitudInput from "./inputs/longitud-input";
 
 export default function InputsContainer() {
   return (

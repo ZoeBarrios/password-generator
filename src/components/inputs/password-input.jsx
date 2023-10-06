@@ -1,13 +1,13 @@
 import { useCallback, useContext, useEffect, useRef, useState } from "react";
 import Regenerate from "/img/regenerate.png";
 import Copy from "/img/copy.png";
-import LengthContext from "../Contexts/length-contex";
+import LengthContext from "../../Contexts/length-contex";
 import { ToastContainer, toast } from "react-toastify";
-import ActionButton from "./action-button";
-import SecutiryText from "./security-text";
-import usePassword from "../customHooks/usePassword";
-import ChecksContext from "../Contexts/checks-context";
-import PasswordInputContext from "../Contexts/password-user";
+import ActionButton from "../action-button";
+import SecutiryText from "../security-text";
+import usePassword from "../../customHooks/usePassword";
+import ChecksContext from "../../Contexts/checks-context";
+import PasswordInputContext from "../../Contexts/password-user";
 
 export default function PasswordInput() {
   const [rotate, setRotate] = useState(false);

@@ -1,7 +1,7 @@
 import { useCallback, useContext, useRef } from "react";
-import LengthContext from "../Contexts/length-contex";
-import PasswordInputContext from "../Contexts/password-user";
-import { TYPE_INPUT } from "../../Utils";
+import LengthContext from "../../Contexts/length-contex";
+import PasswordInputContext from "../../Contexts/password-user";
+import { TYPE_INPUT } from "../../../Utils";
 
 export default function LongitudInputComponent() {
   const { length, setLength } = useContext(LengthContext);

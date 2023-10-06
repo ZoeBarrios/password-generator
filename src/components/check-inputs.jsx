@@ -2,7 +2,7 @@ import { useCallback, useContext, useEffect } from "react";
 import CheckBox from "./check-box";
 import ChecksContext from "../Contexts/checks-context";
 import PasswordUserContext from "../Contexts/password-user";
-import { options } from "../../Utils";
+import { ACTIONS, options } from "../../Utils";
 
 export default function CheckInputs() {
   const { state, dispatch } = useContext(ChecksContext);
@@ -23,7 +23,7 @@ export default function CheckInputs() {
         simbolos: checkIfExist(options.simbolos),
       };
       dispatch({
-        type: "SET_STATE",
+        type: ACTIONS.SET_STATE,
         payload: newState,
       });
     }
